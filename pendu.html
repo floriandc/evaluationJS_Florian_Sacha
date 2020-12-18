@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Jeu du pendu</title>
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+
+    <body>
+        <header>Bienvenue sur le jeu du pendu</header>
+        <p id="mot_afficher"></p>
+        <button type="button" id="boutonA" onclick="verifierlettre('A')">A</button>
+        <button type="button" id="boutonB" onclick="verifierlettre('B')">B</button>
+        <button type="button" id="boutonC" onclick="verifierlettre('C')">C</button>
+        <button type="button" id="boutonD" onclick="verifierlettre('D')">D</button>
+        <button type="button" id="boutonE" onclick="verifierlettre('E')">E</button>
+        <button type="button" id="boutonF" onclick="verifierlettre('F')">F</button>
+        <button type="button" id="boutonG" onclick="verifierlettre('G')">G</button>
+        <button type="button" id="boutonH" onclick="verifierlettre('H')">H</button>
+        <button type="button" id="boutonI" onclick="verifierlettre('I')">I</button>
+        <button type="button" id="boutonJ" onclick="verifierlettre('J')">J</button>
+        <button type="button" id="boutonK" onclick="verifierlettre('K')">K</button>
+        <button type="button" id="boutonL" onclick="verifierlettre('L')">L</button>
+        <button type="button" id="boutonM" onclick="verifierlettre('M')">M</button>
+        <button type="button" id="boutonN" onclick="verifierlettre('N')">N</button>
+        <button type="button" id="boutonO" onclick="verifierlettre('O')">O</button>
+        <button type="button" id="boutonP" onclick="verifierlettre('P')">P</button>
+        <button type="button" id="boutonQ" onclick="verifierlettre('Q')">Q</button>
+        <button type="button" id="boutonR" onclick="verifierlettre('R')">R</button>
+        <button type="button" id="boutonS" onclick="verifierlettre('S')">S</button>
+        <button type="button" id="boutonT" onclick="verifierlettre('T')">T</button>
+        <button type="button" id="boutonU" onclick="verifierlettre('U')">U</button>
+        <button type="button" id="boutonV" onclick="verifierlettre('V')">V</button>
+        <button type="button" id="boutonW" onclick="verifierlettre('W')">W</button>
+        <button type="button" id="boutonX" onclick="verifierlettre('X')">X</button>
+        <button type="button" id="boutonY" onclick="verifierlettre('Y')">Y</button>
+        <button type="button" id="boutonZ" onclick="verifierlettre('Z')">Z</button>
+        <p>Nombre de tentative restante : <span id="nombre_erreur"></span></p>
+        <p id="variable"></p>
+        <p id="resultat"></p>
+
+        <script type="text/javascript">
+            var varibale=document.getElementById('variable');
+            var resultat=document.getElementById('resultat');
+            var nombreErreur=document.getElementById('nombre_erreur');
+
+            var mot_a_trouver="S A L U T";
+            var mot_afficher=document.getElementById('mot_afficher');
+            mot_afficher.innerHTML="S _ _ _ T"
+            var lettresTrouver=""
+            var nombreEssai=10;
+
+            function verifierlettre(lettre)
+            {
+                mot_afficher.innerHTML= verificationLettreBonne(lettre, mot_a_trouver);
+            }
+
+            function verificationLettreBonne(lettre, mot_a_trouver)
+            {
+                if(mot_a_trouver.includes(lettre,0))
+                {
+                    lettresTrouver+=lettre;
+                }
+                else
+                {
+                    nombreEssai-=1;
+                    nombreErreur.innerHTML=nombreEssai;
+                }
+
+                mot_trouver=mot_trouver_fonction(mot_a_trouver,lettresTrouver);
+
+                if(mot_trouver.includes("_",0))
+                {
+
+                }
+                else
+                {
+                    resultat="Gagné";
+                }
+
+                if(nombreEssai==0)
+                {
+                    resultat="Perdu";
+                }
+
+                return mot_trouver;
+                
+
+                /*
+                var mot_a_afficher="SALUT";
+                for(var i=2;i<mot_a_trouver.length-1;i+=2)
+                {
+                    if(mot_a_trouver[i]==lettre)
+                    {
+                        mot_a_afficher.replace('');
+                    }
+                }
+                mot_a_trouver[2]="B";
+                mot_a_afficher[2]="A";
+                console.log(mot_a_afficher[2]);
+                console.log(mot_a_trouver[2]);
+                return mot_a_afficher;*/
+            }  
+
+            function mot_trouver_fonction(mot_a_trouver, lettresTrouver)
+            {
+                motCacher="";
+                i=1;
+                for(lettre in mot_a_trouver)
+                {
+                    if(lettre!="\n")
+                    {
+                        if(lettresTrouver.includes(lettre,0))
+                        {
+                            motCacher+=lettre;
+                            motCacher+=" ";
+                        }
+                        else
+                        {
+                            motCacher+="_";
+                            motCacher+=" ";
+                        }
+                    }
+                }
+                return motCacher;
+            }
+
+
+        </script>
+    </body>
+</html>
