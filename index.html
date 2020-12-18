@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<title>Démineur</title>
+<meta charset="UTF-8" />
+<script src="demineur.js"></script>
+<script>
+    window.onload = function() {
+        initialise();
+    }
+</script>
+<link href="demineur.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="page">
+        <div>
+            &nbsp;
+        </div>
+        <div class="game" id="plateau"></div>
+
+        <div class="options">
+            <div id="result" class="result">
+        </div>
+
+        <div class="menus">
+            <div class="menu" onclick="startGame('easy');">
+                Débutant
+            </div>
+            <div class="menu" onclick="startGame('normal');">
+                Intermédiaire
+            </div>
+            <div class="menu" onclick="startGame('hard');">
+                Expert
+            </div>
+            <div class="menu" onclick="startGame('extreme');">
+                Maître
+            </div>
+            <div id="time">00:00.000</div>
+            <div id=classement></div>
+        </div>
+    </div>
+</body>
+</html>
